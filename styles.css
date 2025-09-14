@@ -1,5 +1,6 @@
 body {
 	background: black;
+	color: white;
 	font-family: Arial, sans-serif;
 }
 
@@ -7,7 +8,7 @@ body {
 	background-color: #007bff;
 	color: white;
 	padding: 10px 10px;
-	border-radius: 10px;
+	border-radius: 8px;
 	text-decoration: none;
 	display: inline-block;
 	transition: background-color 0.3s;
