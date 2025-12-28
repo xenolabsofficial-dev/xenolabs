@@ -15,6 +15,7 @@ const moveSpeed = 0.05;
 const turnSpeed = 0.03;
 const gravity = 0.01;
 const jumpForce = 0.2;
+const sprintMultiplier = 3;
 
 // Raycaster
 const groundRaycaster = new THREE.Raycaster();
@@ -186,25 +187,30 @@ function animate() {
 
 	cameraYaw.rotation.y = yaw;
 	const direction = yaw;
+	
+	let currentSpeed = moveSpeed;
+	if (keys["Shift"]) {
+		currentSpeed *= sprintMultiplier
+	}
 
 	if (keys["w"] || keys["ArrowUp"]) {
-		cameraYaw.position.x -= Math.sin(direction) * moveSpeed;
-		cameraYaw.position.z -= Math.cos(direction) * moveSpeed;
+		cameraYaw.position.x -= Math.sin(direction) * currentSpeed;
+		cameraYaw.position.z -= Math.cos(direction) * currentSpeed;
 	}
 
 	if (keys["s"] || keys["ArrowDown"]) {
-		cameraYaw.position.x += Math.sin(direction) * moveSpeed;
-		cameraYaw.position.z += Math.cos(direction) * moveSpeed;
+		cameraYaw.position.x += Math.sin(direction) * currentSpeed;
+		cameraYaw.position.z += Math.cos(direction) * currentSpeed;
 	}
 
 	if (keys["a"]) {
-		cameraYaw.position.x -= Math.cos(direction) * moveSpeed;
-		cameraYaw.position.z += Math.sin(direction) * moveSpeed;
+		cameraYaw.position.x -= Math.cos(direction) * currentSpeed;
+		cameraYaw.position.z += Math.sin(direction) * currentSpeed;
 	}
 
 	if (keys["d"]) {
-		cameraYaw.position.x += Math.cos(direction) * moveSpeed;
-		cameraYaw.position.z -= Math.sin(direction) * moveSpeed;
+		cameraYaw.position.x += Math.cos(direction) * currentSpeed;
+		cameraYaw.position.z -= Math.sin(direction) * currentSpeed;
 	}
 
 	renderer.render(scene, camera);
