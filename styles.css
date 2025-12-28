@@ -1,5 +1,5 @@
 table, th, td {
-  border: 1px solid;
+    border: 1px solid;
 }
 
 table {
@@ -11,5 +11,16 @@ th, td {
 }
 
 body {
-  font-family: sans-serif;
+    font-family: sans-serif;
+}
+
+#crosshair {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    background: white;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
 }
